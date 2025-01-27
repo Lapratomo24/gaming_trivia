@@ -5,6 +5,7 @@ import platform
 import random
 from colorama import init, Fore, Style
 from quiz import Quiz, DATA_DIR, FILE_PATH
+from quizzes import quizzes
 
 init(autoreset=True)
 
@@ -32,12 +33,29 @@ def loading():
     clear_screen()
     
 
+def run_trivia_quiz():
+    print(Fore.BLUE + "Welcome to Trivia Quiz!" + Style.RESET_ALL)
+    
+    while True:
+        try: 
+            num = int(input("How many questions would you like to answer? (10, 15, 20): "))
+            if num in [10, 15, 20]:
+                break
+            else:
+                print(Fore.YELLOW + "Choose between 10, 15, or 20" + Style.RESET_ALL)
+        except ValueError:
+            print(Fore.YELLOW + "Invalid input. Please enter a number" + Style.RESET_ALL)
+    
+    quiz = Quiz(quizzes)
+    quiz.run_quiz(num)
+        
+    
 def mode_validation(input):
     ''' Validates user input for mode selection '''
     if input in ["a", "b", "c"]:
         return True
     else:
-        print(Fore.RED + "Invalid input. Try again" + Style.RESET_ALL)
+        print(Fore.YELLOW + "Invalid input. Try again" + Style.RESET_ALL)
         return False
 
 
@@ -66,6 +84,7 @@ def main():
                 run_trivia_explorer()
             elif select == "b":
                 run_trivia_quiz()
+                loading()
             else:
                 print("Exiting program...")
                 sys.exit(1)

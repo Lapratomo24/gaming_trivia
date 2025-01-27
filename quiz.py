@@ -47,14 +47,12 @@ class Quiz:
                 + Style.RESET_ALL
             )
 
-    def run_quiz(self):
-        print("Welcome to the Video Game Trivia Quiz!\n")
-        for question in self.questions:
+    def run_quiz(self, num_questions):
+        print(f"\nGot it! Here are {num_questions} questions for you to test your gaming knowledge!\n")
+        for i in range(num_questions):
+            question = self.questions[i]
             self.display_question(question)
             user_choice = self.get_answer()
             self.check_answer(question, user_choice)
         print(f"Quiz over! Your final score is {self.score} / {len(self.questions)}")
-
-
-quiz = Quiz(quizzes)
-quiz.run_quiz()
+        return self.score
