@@ -1,6 +1,6 @@
-import csv
 import os
 import random
+import time
 from quizzes import quizzes
 from datetime import datetime
 from colorama import init, Fore, Style
@@ -55,4 +55,4 @@ class Quiz:
             user_choice = self.get_answer()
             self.check_answer(question, user_choice)
         print(f"Quiz over! Your final score is {self.score} / {len(self.questions)}")
-        return self.score
+        print("Thanks for playing!")
