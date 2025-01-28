@@ -1,8 +1,6 @@
 import os
 import random
-import time
 from quizzes import quizzes
-from datetime import datetime
 from colorama import init, Fore, Style
 
 init(autoreset=True)
@@ -49,6 +47,7 @@ class Quiz:
 
     def run_quiz(self, num_questions):
         print(f"\nGot it! Here are {num_questions} questions for you to test your gaming knowledge!\n")
+        random.shuffle(self.questions)
         for i in range(num_questions):
             question = self.questions[i]
             self.display_question(question)

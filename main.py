@@ -2,7 +2,6 @@ import sys
 import time
 import os
 import platform
-import random
 import csv
 from datetime import datetime
 from colorama import init, Fore, Style
@@ -52,7 +51,8 @@ def save_to_csv(username, score, num_questions):
 
 
 def run_trivia_quiz():
-    print(Fore.BLUE + "Welcome to Trivia Quiz! \n" + Style.RESET_ALL)
+    """Displays trivia quiz to user"""
+    print(Fore.BLUE + "Welcome to Gaming Quiz! \n" + Style.RESET_ALL)
     username = input("Tell us your name: ")
     loading()
 
@@ -78,6 +78,25 @@ def run_trivia_quiz():
     save_to_csv(username, score, num)
 
 
+def run_trivia_history():
+    """Displays trivia history to user"""
+    print(Fore.BLUE + "Welcome to Timelines of Gaming History! \n" + Style.RESET_ALL)
+    print("=== Select Platform ===")
+    print("(a) PlayStation")
+    print("(b) Xbox")
+    print("(c) Nintendo")
+    
+    while True:
+        try:
+            choice = input("You pick: ")
+            if mode_validation(choice):
+                display_timeline()
+            else:
+                print(Fore.YELLOW + "Select between (a), (b), or (c)." + Style.RESET_ALL)
+        except ValueError:
+            print(Fore.YELLOW + "Invalid input. Select between (a), (b), or (c)." + Style.RESET_ALL)
+            
+    
 def mode_validation(input):
     """Validates user input for mode selection"""
     if input in ["a", "b", "c"]:
@@ -92,8 +111,8 @@ def display_menu():
     print(Fore.BLUE + "\nWelcome to Video Game Trivia!")
     print("Select a mode to run the program:\n" + Style.RESET_ALL)
     print("=====================================")
-    print("(a) Trivia Explorer")
-    print("(b) Trivia Quiz")
+    print("(a) Trivia: Timelines of Gaming History")
+    print("(b) Trivia: Gaming Quiz")
     print("(c) Exit")
     print("=====================================")
 
@@ -109,7 +128,7 @@ def main():
             loading()
 
             if select == "a":
-                run_trivia_explorer()
+                run_trivia_history()
             elif select == "b":
                 run_trivia_quiz()
             else:
