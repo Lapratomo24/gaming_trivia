@@ -7,6 +7,7 @@ from datetime import datetime
 from colorama import init, Fore, Style
 from quiz import Quiz, DATA_DIR, FILE_PATH
 from quizzes import quizzes
+from timeline_data import timeline_data
 
 init(autoreset=True)
 
@@ -53,14 +54,13 @@ def save_to_csv(username, score, num_questions):
 def run_trivia_quiz():
     """Displays trivia quiz to user"""
     print(Fore.BLUE + "Welcome to Gaming Quiz! \n" + Style.RESET_ALL)
-    username = input("Tell us your name: ")
-    loading()
+    username = input("Tell us your name: ").capitalize()
 
     while True:
         try:
             num = int(
                 input(
-                    f"Hi, {username}! How many questions would you like to answer? (10, 15, 20): "
+                    f"\nHi, " + Fore.GREEN + f"{username}" + Style.RESET_ALL + "! How many questions would you like to answer? (10, 15, 20): "
                 )
             )
             if num in [10, 15, 20]:
@@ -72,6 +72,7 @@ def run_trivia_quiz():
                 Fore.YELLOW + "Invalid input. Please enter a number" + Style.RESET_ALL
             )
 
+    loading()
     quiz = Quiz(quizzes)
     score = quiz.run_quiz(num)
     # time_taken = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -79,24 +80,55 @@ def run_trivia_quiz():
 
 
 def run_trivia_history():
-    """Displays trivia history to user"""
-    print(Fore.BLUE + "Welcome to Timelines of Gaming History! \n" + Style.RESET_ALL)
-    print("=== Select Platform ===")
+    """Displays trivia history platform option to user"""
+    print(Fore.BLUE + "Welcome to Timelines of Gaming History!\n" + Style.RESET_ALL)
+    print("=== Select Platform ===\n")
     print("(a) PlayStation")
     print("(b) Xbox")
     print("(c) Nintendo")
-    
+
     while True:
         try:
-            choice = input("You pick: ")
+            choice = input("\nYou pick: ").strip().lower()
             if mode_validation(choice):
-                display_timeline()
+                loading()
+
+                if choice == "a":
+                    display_timeline("PlayStation")
+                elif choice == "b":
+                    display_timeline("Xbox")
+                elif choice == "c":
+                    display_timeline("Nintendo")
+
+                break
+
             else:
-                print(Fore.YELLOW + "Select between (a), (b), or (c)." + Style.RESET_ALL)
+                print(
+                    Fore.YELLOW + "Select between (a), (b), or (c)." + Style.RESET_ALL
+                )
         except ValueError:
-            print(Fore.YELLOW + "Invalid input. Select between (a), (b), or (c)." + Style.RESET_ALL)
-            
-    
+            print(
+                Fore.YELLOW
+                + "Invalid input. Select between (a), (b), or (c)."
+                + Style.RESET_ALL
+            )
+
+
+def display_timeline(platform):
+    """Displays trivia history result to user"""
+    events = sorted(timeline_data[platform], key=lambda x: x["year"])
+    print(Fore.MAGENTA + f"\n=== {platform} Timeline ===\n")
+    for event in events:
+        print(
+            Fore.MAGENTA
+            + f"{event["year"]}: "
+            + Fore.GREEN
+            + f"{event["event"]}"
+            + Style.RESET_ALL
+        )
+        print(f"      Note: {event["note"]}\n")
+
+
 def mode_validation(input):
     """Validates user input for mode selection"""
     if input in ["a", "b", "c"]:
@@ -108,7 +140,7 @@ def mode_validation(input):
 
 def display_menu():
     """Displays the main menu"""
-    print(Fore.BLUE + "\nWelcome to Video Game Trivia!")
+    print(Fore.BLUE + "=== Welcome to Video Game Trivia! ===\n")
     print("Select a mode to run the program:\n" + Style.RESET_ALL)
     print("=====================================")
     print("(a) Trivia: Timelines of Gaming History")

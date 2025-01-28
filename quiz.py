@@ -46,12 +46,18 @@ class Quiz:
             )
 
     def run_quiz(self, num_questions):
-        print(f"\nGot it! Here are {num_questions} questions for you to test your gaming knowledge!\n")
+        print(
+            f"Got it! Here are {num_questions} questions for you to test your gaming knowledge!\n"
+        )
         random.shuffle(self.questions)
         for i in range(num_questions):
             question = self.questions[i]
             self.display_question(question)
             user_choice = self.get_answer()
             self.check_answer(question, user_choice)
-        print(f"Quiz over! Your final score is {self.score} / {len(self.questions)}")
+        print(
+            Fore.MAGENTA
+            + f"Quiz over! Your final score is {self.score} / {len(self.questions)}"
+            + Style.RESET_ALL
+        )
         print("Thanks for playing!")
