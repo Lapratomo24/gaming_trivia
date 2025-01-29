@@ -54,13 +54,16 @@ def save_to_csv(username, score, num_questions):
 def run_trivia_quiz():
     """Displays trivia quiz to user"""
     print(Fore.BLUE + "=== Welcome to Gaming Trivia Quiz! ===\n" + Style.RESET_ALL)
-    username = input("Tell us your name: ").capitalize()
+    username = input("Tell us your name: ").capitalize()        
 
     while True:
+        if not username:
+            username = input("\nPlease type in your name to proceed: ")
+            continue
         try:
             num = int(
                 input(
-                    f"\nHi, "
+                    "\nHi, "
                     + Fore.GREEN
                     + f"{username}"
                     + Style.RESET_ALL
@@ -70,10 +73,10 @@ def run_trivia_quiz():
             if num in [10, 15, 20]:
                 break
             else:
-                print(Fore.YELLOW + "Choose between 10, 15, or 20" + Style.RESET_ALL)
+                print(Fore.RED + "Choose between 10, 15, or 20!" + Style.RESET_ALL)
         except ValueError:
             print(
-                Fore.YELLOW + "Invalid input. Please enter a number" + Style.RESET_ALL
+                Fore.RED + "Invalid input. Please enter a number!" + Style.RESET_ALL
             )
 
     loading()
@@ -108,12 +111,12 @@ def run_trivia_history():
 
             else:
                 print(
-                    Fore.YELLOW + "Select between (a), (b), or (c)." + Style.RESET_ALL
+                    Fore.RED + "Select between (a), (b), or (c)!" + Style.RESET_ALL
                 )
         except ValueError:
             print(
-                Fore.YELLOW
-                + "Invalid input. Select between (a), (b), or (c)."
+                Fore.RED
+                + "Invalid input. Select between (a), (b), or (c)!"
                 + Style.RESET_ALL
             )
 
@@ -138,7 +141,7 @@ def mode_validation(input):
     if input in ["a", "b", "c"]:
         return True
     else:
-        print(Fore.YELLOW + "Invalid input. Try again" + Style.RESET_ALL)
+        print(Fore.RED + "Invalid input. Try again! \n" + Style.RESET_ALL)
         return False
 
 

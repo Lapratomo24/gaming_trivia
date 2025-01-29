@@ -29,9 +29,9 @@ class Quiz:
                 if 1 <= choice <= 3:
                     return choice
                 else:
-                    print("Please select a number between 1 and 3")
+                    print(Fore.RED + "Please select a number between 1 and 3!" + Style.RESET_ALL)
             except ValueError:
-                print("Invalid input. Please enter a number")
+                print(Fore.RED + "Invalid input. Please enter a number!" + Style.RESET_ALL)
 
     def check_answer(self, question_data, user_input):
         correct_answer = question_data["options"].index(question_data["answer"]) + 1
@@ -61,3 +61,4 @@ class Quiz:
             + Style.RESET_ALL
         )
         print("\n=== Thanks for playing! ===\n")
+        return self.score
