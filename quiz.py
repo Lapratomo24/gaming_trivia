@@ -18,7 +18,7 @@ class Quiz:
         self.score = 0
 
     def display_question(self, question_data):
-        print(question_data["question"])
+        print(Fore.YELLOW + question_data["question"] + Style.RESET_ALL)
         for i, option in enumerate(question_data["options"], start=1):
             print(f"{i}. {option}")
 
@@ -57,7 +57,7 @@ class Quiz:
             self.check_answer(question, user_choice)
         print(
             Fore.MAGENTA
-            + f"Quiz over! Your final score is {self.score} / {len(self.questions)}"
+            + f"Quiz over! Your final score is {self.score} / {num_questions}"
             + Style.RESET_ALL
         )
-        print("Thanks for playing!")
+        print("\n=== Thanks for playing! ===\n")

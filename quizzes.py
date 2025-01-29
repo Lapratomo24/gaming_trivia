@@ -1,7 +1,7 @@
 quizzes = [
     {
         "question": "What is the name of the protagonist in *The Legend of Zelda* series?\n",
-        "options": ["Zelda", "Link", "Ganon"],
+        "options": ["Zelda", "Ganon", "Link"],
         "answer": "Link",
     },
     {
@@ -34,7 +34,7 @@ quizzes = [
     },
     {
         "question": "In *God of War (2018)*, what mythological realm is Kratos’ wife from?\n",
-        "options": ["Vanaheim", "Jötunheim", "Alfheim"],
+        "options": ["Vanaheim", "Alfheim", "Jötunheim"],
         "answer": "Jötunheim",
     },
     {
@@ -49,7 +49,7 @@ quizzes = [
     },
     {
         "question": "Which PS1 game popularized the survival horror genre?\n",
-        "options": ["*Silent Hill*", "*Resident Evil*", "*Parasite Eve*"],
+        "options": ["*Silent Hill*", "*Parasite Eve*", "*Resident Evil*"],
         "answer": "*Resident Evil*",
     },
     {
@@ -59,7 +59,7 @@ quizzes = [
     },
     {
         "question": "Which Xbox-exclusive franchise stars a Spartan super-soldier?\n",
-        "options": ["*Gears of War*", "*Halo*", "*Fable*"],
+        "options": ["*Gears of War*", "*Fable*", "*Halo*"],
         "answer": "*Halo*",
     },
     {
@@ -84,7 +84,7 @@ quizzes = [
     },
     {
         "question": "What is the default name of the player character in *Minecraft*?\n",
-        "options": ["Steve", "Alex", "Herobrine"],
+        "options": ["Herobrine", "Alex", "Steve"],
         "answer": "Steve",
     },
     {
@@ -108,7 +108,7 @@ quizzes = [
     },
     {
         "question": "What year did *World of Warcraft* launch?\n",
-        "options": ["2002", "2004", "2006"],
+        "options": ["2002", "2006", "2004"],
         "answer": "2004",
     },
 ]

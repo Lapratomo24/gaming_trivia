@@ -28,7 +28,7 @@ def clear_screen():
 
 def loading():
     """Displays a short loading animation"""
-    print("Now loading", end="", flush=True)
+    print("\nNow loading", end="", flush=True)
     for _ in range(3):
         time.sleep(0.3)
         print(".", end="", flush=True)
@@ -53,14 +53,18 @@ def save_to_csv(username, score, num_questions):
 
 def run_trivia_quiz():
     """Displays trivia quiz to user"""
-    print(Fore.BLUE + "Welcome to Gaming Quiz! \n" + Style.RESET_ALL)
+    print(Fore.BLUE + "=== Welcome to Gaming Trivia Quiz! ===\n" + Style.RESET_ALL)
     username = input("Tell us your name: ").capitalize()
 
     while True:
         try:
             num = int(
                 input(
-                    f"\nHi, " + Fore.GREEN + f"{username}" + Style.RESET_ALL + "! How many questions would you like to answer? (10, 15, 20): "
+                    f"\nHi, "
+                    + Fore.GREEN
+                    + f"{username}"
+                    + Style.RESET_ALL
+                    + "! How many questions would you like to answer? (10, 15, 20): "
                 )
             )
             if num in [10, 15, 20]:
