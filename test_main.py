@@ -36,10 +36,10 @@ def test_display_question(capsys):
     quiz = Quiz(SAMPLE_QUESTION)
     quiz.display_question(SAMPLE_QUESTION)
     captured = capsys.readouterr()
-    assert "What is the capital of France?" in captured.out
-    assert "1. Berlin" in captured.out
-    assert "2. Paris" in captured.out
-    assert "3. Madrid" in captured.out
+    assert "What is the mascot of PlayStation?" in captured.out
+    assert "1. Astro Bot" in captured.out
+    assert "2. Crash Bandicoot" in captured.out
+    assert "3. Lara Croft" in captured.out
 
 
 if __name__ == "__main__":
