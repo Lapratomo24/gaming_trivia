@@ -26,9 +26,9 @@ def test_mode_validation():
 
 
 SAMPLE_QUESTION = {
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Paris", "Madrid"],
-    "answer": "Paris",
+    "question": "What is the mascot of PlayStation?",
+    "options": ["Astro Bot", "Crash Bandicoot", "Lara Croft"],
+    "answer": "Astro Bot",
 }
 
 # Test to display question

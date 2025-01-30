@@ -1,6 +1,5 @@
 import os
 import random
-from quizzes import quizzes
 from colorama import init, Fore, Style
 
 init(autoreset=True)
@@ -12,7 +11,6 @@ FILE_PATH = os.path.join(DATA_DIR, "score.csv")
 
 class Quiz:
     """Stores questions and answers"""
-
     def __init__(self, questions):
         self.questions = questions
         self.score = 0
@@ -23,6 +21,7 @@ class Quiz:
             print(f"{i}. {option}")
 
     def get_answer(self):
+        """Gets user input"""
         while True:
             try:
                 choice = int(input("\nSelect a number between 1 and 3: "))
@@ -34,6 +33,7 @@ class Quiz:
                 print(Fore.RED + "Invalid input. Please enter a number!" + Style.RESET_ALL)
 
     def check_answer(self, question_data, user_input):
+        """Checks user input against the correct answer"""
         correct_answer = question_data["options"].index(question_data["answer"]) + 1
         if user_input == correct_answer:
             print(Fore.GREEN + "\nCorrect answer!\n" + Style.RESET_ALL)
@@ -46,6 +46,7 @@ class Quiz:
             )
 
     def run_quiz(self, num_questions):
+        """Runs the quiz mode"""
         print(
             f"Got it! Here are {num_questions} questions for you to test your gaming knowledge!\n"
         )

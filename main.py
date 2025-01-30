@@ -36,6 +36,7 @@ def loading():
 
 
 def save_to_csv(username, score, num_questions):
+    """Saves data to csv file"""
     fieldnames = ["Username", "Score", "#Questions", "Date"]
     with open(FILE_PATH, "a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
